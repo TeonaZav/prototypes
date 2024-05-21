@@ -1,8 +1,7 @@
-import React from "react";
-import Section from "./Section";
-import CodeEditor from "./CodeEditor";
-import { codeExamples } from "../data/demoCodes";
-import InnerContainer from "./InnerContainer";
+import Section from "../UI/Section";
+import CodeEditor from "../CodeEditor";
+import { codeExamples } from "../../data/demoCodes";
+import NavigationButtons from "../UI/NavigationButtons";
 
 const Section7 = () => {
   class PersonCl {
@@ -22,9 +21,12 @@ const Section7 = () => {
   console.log(PersonCl.prototype);
 
   return (
-    <Section heading="ქვეკლასები">
-      <CodeEditor codeExample={codeExamples.example8} />
-    </Section>
+    <>
+      <NavigationButtons prevPath="/section6" />
+      <Section heading="ქვეკლასები">
+        <CodeEditor codeExample={codeExamples.example8} />
+      </Section>
+    </>
   );
 };
 

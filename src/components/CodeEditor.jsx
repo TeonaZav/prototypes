@@ -42,7 +42,7 @@ greet();`;
       <button className="btn btn-primary btn-run" onClick={executeCode}>
         Run Code
       </button>
-      <pre className="result">Output: {output}</pre>
+      <pre className="result"> {output}</pre>
     </div>
   );
 };
