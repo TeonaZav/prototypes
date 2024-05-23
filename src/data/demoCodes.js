@@ -31,12 +31,19 @@ export const codeExamples = {
   example1: `
 
   const nums = [1,2,3,4,5];
-  console.log("nums proto is: ", nums.__proto__); 
-  console.log(nums.__proto__ === Array.prototype)
+  console.log("nums proto is: ", nums.__proto__.__proto__); 
+  console.log(nums.__proto__ === Array.prototype);
+  console.log(nums.__proto__.__proto__ === Object.prototype)
+
+  /* რიცხვზეც კი შეგვიძლია გამოვიყენოთ გარკვეული მეთოდები, 
+  რადგან ჯავასკრიპტი ავტომატურად დროებით გადაიყვანს 
+  შესაბამის ჩაშენებულ კონსტრუქტორ ფუნქციაში */
 
   const num = 4.12345636;
   console.log(num.toFixed(2));
 
+/*შეგვიძლია ხელით ჩავამატოთ მეთოდები ჩაშენებული კონსტრუქტორი 
+ფუნქციის prototype ფროფერთიში */
   Number.prototype.isPositive = function () {
       return this > 0;
     };
@@ -63,7 +70,8 @@ function Person(firstName, lastName) {
     
     this.getFullName = function(){
         console.log(this.firstName + " " + this.lastName);
-    }
+    } /* შესაძლებელია ასე კონსტრუქტორში ჩაწერა, მაგრამ 
+    ყოველი ინსტანციისთვის შეიქმნება ეს მეთოდი */
 }
 
 let john = new Person("John", "Doe");
@@ -78,7 +86,8 @@ function Person(firstName, lastName) {
     
     this.getFullName = function(){
         console.log(this.firstName + " " + this.lastName);
-    }
+    } /* შესაძლებელია ასე კონსტრუქტორში ჩაწერა, მაგრამ 
+    ყოველი ინსტანციისთვის შეიქმნება ეს მეთოდი */
 }
 
 console.log(foo.prototype); 
@@ -92,7 +101,8 @@ function Person(firstName, lastName) {
 
 Person.prototype.getFullName = function(){
   console.log(this.firstName + " " + this.lastName);
-}
+} /* მეხსიერებაში იქნება მხოლოდ ერთგან, Person.prototype-ში 
+და Person კონსტრუქტორით შექმნილი ობიექტები მიიღბენ მასზე წვდომას*/
 
 let john = new Person("John", "Doe");
 john.getFullName();
@@ -126,14 +136,27 @@ Person.prototype.getFullName = function(){
   console.log(this.firstName + " " + this.lastName);
 }
 
+/* სტუდენტი არის Person-თან იერარქიულად დაკავშირებული, 
+ამიტომ შეგვიძლია ის გავხადოთ Person-ის მემკვიდრე. */
 
 const Student = function(firstName, lastName, faculty){
-  Person.call(this, firstName, lastName);
+  Person.call(this, firstName, lastName); 
   this.faculty = faculty;
 }
-Student.prototype = Object.create(Person.prototype);
+Student.prototype = Object.create(Person.prototype); 
+/* შეიქმნება ახალი ობიქტი, რომლის პროტო იქნება Person.prototype. 
+ახლა Student.prototype არის ობიექტი რომელიც მემკვიდრეობას იღებს 
+Person.prototype-სგან. 
+Object.create-ის დამსახურებით, Person.prototype-ში შეტანილი ცვლილება 
+არ იმოქმედებს Student.prototype-ზე. */
+
 
 const alice = new Student("Alice", "Smith");
+console.log(alice.__proto__); // Person {}
+
+console.log(alice.__proto__ === Student.prototype); // true
+console.log(Student.prototype.__proto__ === Person.prototype); // true
+
 alice.getFullName();
 
 
@@ -147,9 +170,10 @@ alice.getFullName();
 
     getFullName = function () {
       console.log(this.firstName + " " + this.lastName);
-    };
+    }; //ჩაემატება პროტოტიპში
   }
 
+  //მემკვიდრეობის მიღება მშობელი კლასიდან
   class Studentcl extends PersonCl {
     constructor(firstName, lastName, faculty) {
       super(firstName, lastName); // მშობელი კლასის კონსტრუქტორი ფუნქცია

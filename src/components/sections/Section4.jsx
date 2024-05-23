@@ -1,12 +1,10 @@
 import Section from "../UI/Section";
 import CodeEditor from "../CodeEditor";
 import { codeExamples } from "../../data/demoCodes";
-import NavigationButtons from "../UI/NavigationButtons";
 
 const Section4 = () => {
   return (
-    <>
-      <NavigationButtons prevPath="/section3" nextPath="/section5" />
+    
       <Section heading="ფროფერთი სახელწოდებით 'prototype'">
         <h6 className="m-4">
           ზემოთ ვთქვით, რომ ახლად შექმნილი ობიექტი {"{"}
@@ -27,13 +25,14 @@ const Section4 = () => {
         <CodeEditor codeExample={codeExamples.example6} />
         <h6 className="m-4">როგორ ხდება ეს წვდომა?</h6>
         <p>
-          ჯავსკრიპტში თითოეულ ობიექტს აქვს ფროფერთი __proto__ ეს __proto__ არის
+          ჯავსკრიპტში თითოეულ ობიექტს აქვს ფროფერთი __proto__. ეს __proto__ არის
           რეფერენსი თავისი კონსტრუქტორი ფუნქციის ფროფერთ - "prototype"-ზე,
-          რომელიც როგორც უკვე ავღნიშნეთ არის ობიექტი.
+          რომელიც, როგორც უკვე აღვნიშნეთ, არის ობიექტი.
         </p>
+
         <CodeEditor codeExample={codeExamples.example7} />
       </Section>
-    </>
+  
   );
 };
 

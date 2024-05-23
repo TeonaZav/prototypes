@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="my-2">
+      <div className="mt-5">
         <Router>
           <div className="d-flex">
             <Sidebar />

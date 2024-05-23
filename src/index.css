@@ -21,7 +21,6 @@
 }
 
 .result {
-  background-color: rgb(222, 218, 183);
   border-radius: 0.5rem;
   padding: 1rem;
 }
@@ -30,25 +29,17 @@ h2 {
   color: #5b39ab;
 }
 
-.d-flex {
-  display: flex;
-}
-
 .sidebar {
-  width: 250px;
+  width: 15rem;
   height: 100vh;
   position: fixed;
-  background-color: #f8f9fa;
   margin-top: 1.6rem;
 }
 
 .content {
-  margin-left: 250px;
-  width: calc(100% - 250px);
-  padding: 20px;
-}
+  margin-left: 15rem;
+  width: calc(100% - 15rem);
+  padding: 2rem;
 
-.list-group-item {
-  border-radius: 0;
-  background-color: #cecece;
+  overflow-y: auto;
 }
