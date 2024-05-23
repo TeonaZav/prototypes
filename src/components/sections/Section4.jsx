@@ -3,7 +3,6 @@ import CodeEditor from "../CodeEditor";
 import { codeExamples } from "../../data/demoCodes";
 import NavigationButtons from "../UI/NavigationButtons";
 
-
 const Section4 = () => {
   return (
     <>
@@ -18,21 +17,19 @@ const Section4 = () => {
           მასივი და ფუნქციაც. შესბამისად ფუნქციას აქვს ფროფერთიები. მათ შორის
           არის ფროფერთი "prototype", რომელიც არის ცარიელი ობიექტი.
         </p>
-        <p>
-          მათ შორის არის ფროფერთი "prototype", რომელიც არის ცარიელი ობიექტი.
-        </p>
+
         <CodeEditor codeExample={codeExamples.example5} />
         <p>
-          მებისმიერი ობიექტი, რომელიც შეიქმნება კონსტრუქტორი ფუნქციით,
+          ნებისმიერი ობიექტი, რომელიც შეიქმნება კონსტრუქტორი ფუნქციით,
           ავტომატურად მიიღებს წვდომას ყველა იმ ფროფერთიზე და მეთოდზე, რომელსაც
           განვსაზღვრავთ prototype-ობიექტში.
         </p>
         <CodeEditor codeExample={codeExamples.example6} />
         <h6 className="m-4">როგორ ხდება ეს წვდომა?</h6>
         <p>
-          ჯავსკრიპტში თითოეულ ობიექტს აქვს ფროფერთი __proto__ (ერთადერთი
-          გამონაკლისია base ობიექტი Object). ეს __proto__ არის რეფერენსი
-          "prototype" ობიექტზე.
+          ჯავსკრიპტში თითოეულ ობიექტს აქვს ფროფერთი __proto__ ეს __proto__ არის
+          რეფერენსი თავისი კონსტრუქტორი ფუნქციის ფროფერთ - "prototype"-ზე,
+          რომელიც როგორც უკვე ავღნიშნეთ არის ობიექტი.
         </p>
         <CodeEditor codeExample={codeExamples.example7} />
       </Section>
